@@ -1,7 +1,7 @@
 
 env:
    global:
-     - CONAN_REFERENCE: "libarcive/3.3.3"
+     - CONAN_REFERENCE: "libarchive/3.3.3"
      - CONAN_USERNAME: "azubieta"
      - CONAN_LOGIN_USERNAME: "azubieta"
      - CONAN_CHANNEL: "testing"

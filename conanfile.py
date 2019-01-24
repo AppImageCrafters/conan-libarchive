@@ -2,7 +2,7 @@ from conans import ConanFile, AutoToolsBuildEnvironment, tools
 
 
 class LibarciveConan(ConanFile):
-    name = "libarcive"
+    name = "libarchive"
     version = "3.3.3"
     license = "https://raw.githubusercontent.com/libarchive/libarchive/master/COPYING"
     author = "Alexis Lopez Zubieta <contact@azubieta.net>"
