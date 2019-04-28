@@ -2,10 +2,10 @@
 env:
    global:
      - CONAN_REFERENCE: "libarchive/3.3.3"
-     - CONAN_USERNAME: "azubieta"
+     - CONAN_USERNAME: "appimage-conan-community"
      - CONAN_LOGIN_USERNAME: "azubieta"
-     - CONAN_CHANNEL: "testing"
-     - CONAN_UPLOAD: "https://api.bintray.com/conan/azubieta/AppImage"
+     - CONAN_CHANNEL: "stable"
+     - CONAN_UPLOAD: "https://api.bintray.com/conan/appimage-conan-community/public-conan "
 
 linux: &linux
    os: linux
@@ -20,19 +20,7 @@ matrix:
    include:
 
       - <<: *linux
-        env: CONAN_GCC_VERSIONS=4.9 CONAN_DOCKER_IMAGE=conanio/gcc49
-
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=5 CONAN_DOCKER_IMAGE=conanio/gcc5
-
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=conanio/gcc6
-
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=conanio/gcc7
-
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=8 CONAN_DOCKER_IMAGE=conanio/gcc8
+        env: CONAN_GCC_VERSIONS=4.8 CONAN_DOCKER_IMAGE=conanio/gcc48 CONAN_ARCHS="x86_64"
 
 install:
   - chmod +x .travis/install.sh

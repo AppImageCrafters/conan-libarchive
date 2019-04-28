@@ -6,13 +6,12 @@ class LibarciveConan(ConanFile):
     version = "3.3.3"
     license = "https://raw.githubusercontent.com/libarchive/libarchive/master/COPYING"
     author = "Alexis Lopez Zubieta <contact@azubieta.net>"
-    url = "https://github.com/azubieta/conan-libarchive"
+    url = "https://github.com/appimage-conan-community/conan-libarchive"
     description = "Libarchive for use in AppImage"
     topics = ("libarchive", "iso", "tar")
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fpic": [True, False]}
     default_options = {"shared": False, "fpic": True}
-    generators = "cmake"
 
     def source(self):
         tools.download("https://libarchive.org/downloads/libarchive-3.3.3.tar.gz",
@@ -43,3 +42,4 @@ class LibarciveConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["archive"]
+        self.cpp_info.builddirs = ["lib/pkgconfig/"]
