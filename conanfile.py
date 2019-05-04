@@ -10,8 +10,8 @@ class LibarciveConan(ConanFile):
     description = "Libarchive for use in AppImage"
     topics = ("libarchive", "iso", "tar")
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "fpic": [True, False]}
-    default_options = {"shared": False, "fpic": True}
+    options = {"shared": [True, False], "fPIC": [True, False]}
+    default_options = {"shared": False, "fPIC": True}
 
     def source(self):
         tools.download("https://libarchive.org/downloads/libarchive-3.3.3.tar.gz",
@@ -20,7 +20,7 @@ class LibarciveConan(ConanFile):
 
     def build(self):
         autotools = AutoToolsBuildEnvironment(self)
-        autotools.fpic = True
+        autotools.fPIC = True
         env_build_vars = autotools.vars
         configure_args = ["--disable-bsdtar", "--disable-bsdcat", "--disable-bsdcpio", "--with-zlib",
                           "--without-bz2lib", "--without-iconv", "--without-lz4", "--without-lzma", "--without-lzo2",
@@ -31,7 +31,7 @@ class LibarciveConan(ConanFile):
         else:
             configure_args += ["--disable-shared", "--enable-static"]
 
-        if self.options["fpic"]:
+        if self.options["fPIC"]:
             configure_args += ["--with-pic"]
 
         autotools.configure(configure_dir="libarchive-3.3.3", vars=env_build_vars,
